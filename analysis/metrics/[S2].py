@@ -23,14 +23,27 @@ COLUMN_GROUPS = {
 
 # ==================== MODULE CONFIG ====================
 _MODULE_CONFIG = {
-    "data_model": "pandas", 
+    "data_model": "pandas",
     "execution_type": "sync",
     "category": "technical",
 
-    # metric -> column group
+    # hangi kolon setine ihtiyaç var?
     "required_groups": {
         "abc_metric": "ohlc",
         "klm_metric": "close_only",
+    },
+
+    # opsiyonel
+    "score_profile": {
+        "abc_metric": {
+            "method": "minmax",
+            "range": [-1, 1],
+            "direction": "positive"
+        },
+        "klm_metric": {
+            "method": "zscore",
+            "direction": "negative"
+        }
     }
 }
 
